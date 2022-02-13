@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
   const { email, password } = req.body
   return Login.findOne({ email: email, password: password})
         .lean()
-        .then( (user) => res.send(user.firstName))
+        .then( (user) => res.render('home', { firstName: user.firstName }))
         .catch(error => {
           console.log(error)
           res.redirect('/')
