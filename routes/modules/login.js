@@ -11,8 +11,8 @@ router.post('/', (req, res) => {
         .lean()
         .then( (user) => res.render('home', { firstName: user.firstName }))
         .catch(error => {
-          console.log(error)
-          res.redirect('/')
+          const errorMessage = 'Email or Password is wrong.'
+          res.render('login', { errorMessage })
         })
 })
 
